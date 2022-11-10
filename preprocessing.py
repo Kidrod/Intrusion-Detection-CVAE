@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler,Imputer
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.impute import SimpleImputer as Imputer
 
 train = pd.read_csv("dataset/KDDTrain+.txt")
 test = pd.read_csv("dataset/KDDTest+.txt")
@@ -12,8 +13,8 @@ for i in discard:
     del test[i]
 
 # min-max-scaler
-numeric_columns = list(train.select_dtypes(include=['int',"float"]).columns)
-imp = Imputer(strategy="mean", axis=0)
+numeric_columns = list(train.select_dtypes(include=["int32","int64","float32","float64"]).columns)
+Imputer(missing_values=np.nan,strategy="mean")
 minmax = MinMaxScaler()
 for c in numeric_columns:
     train[c] = minmax.fit_transform(np.array(train[c]).reshape(-1,1))
@@ -49,5 +50,5 @@ test["class"] = test["class"].map(f)
 train["class"] = train["class"].map(lambda x : a2v[x])
 test["class"] = test["class"].map(lambda x : a2v[x])
 
-train.to_csv("dataset/VAE_Train+.csv")
-test.to_csv("dataset/VAE_Test+.csv")
+train.to_csv("dataset/VAE_Train+.csv",index=False)
+test.to_csv("dataset/VAE_Test+.csv",index=False)
