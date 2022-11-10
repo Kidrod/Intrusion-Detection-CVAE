@@ -13,7 +13,7 @@ test = pd.read_csv("/content/Intrusion-Detection-CVAE/dataset/VAE_Test+.csv")
 trainx, trainy = np.array(train[train.columns[train.columns != "class"]]), np.array(pd.get_dummies(train["class"]))
 testx, testy= np.array(test[train.columns[train.columns != "class"]]), np.array(pd.get_dummies(test["class"]))
 batch_size = 512
-max_epoch = 100
+max_epoch = 10
 train_N = len(train)
 test_N = len(test)
 gpu = False
