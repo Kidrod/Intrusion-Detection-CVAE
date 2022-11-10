@@ -15,10 +15,10 @@ def Loss_function(x_hat,x, mu,logsimga):
 
 
 model = CVAE()
-param = th.load('save_model/vae_adadelta300.pth',map_location=lambda x,y:x)
+param = th.load('/content/Intrusion-Detection-CVAE/save_model/vae_adadelta300.pth',map_location=lambda x,y:x)
 model.load_state_dict(param)
 
-test = pd.read_csv("dataset/VAE_Test+.csv")
+test = pd.read_csv("/content/Intrusion-Detection-CVAE/dataset/VAE_Test+.csv")
 testx, testy= np.array(test[test.columns[test.columns != "class"]]), np.array(pd.get_dummies(test["class"]))
 z_dim = 25
 n,m = testx.shape[1],testy.shape[1]
