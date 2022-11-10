@@ -3,8 +3,8 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.impute import SimpleImputer as Imputer
 
-train = pd.read_csv("dataset/KDDTrain+.txt")
-test = pd.read_csv("dataset/KDDTest+.txt")
+train = pd.read_csv("/content/Intrusion-Detection-CVAE/dataset/KDDTrain+.txt")
+test = pd.read_csv("/content/Intrusion-Detection-CVAE/dataset/KDDTest+.txt")
 
 #since mostly zero 
 discard = ["land","logged_in","root_shell","su_attempted","is_host_login","is_guest_login","value"]
@@ -50,5 +50,5 @@ test["class"] = test["class"].map(f)
 train["class"] = train["class"].map(lambda x : a2v[x])
 test["class"] = test["class"].map(lambda x : a2v[x])
 
-train.to_csv("dataset/VAE_Train+.csv",index=False)
-test.to_csv("dataset/VAE_Test+.csv",index=False)
+train.to_csv("/content/Intrusion-Detection-CVAE/dataset/VAE_Train+.csv",index=False)
+test.to_csv("/content/Intrusion-Detection-CVAE/dataset/VAE_Test+.csv",index=False)
