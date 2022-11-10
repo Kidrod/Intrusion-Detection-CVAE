@@ -8,8 +8,8 @@ from torch.nn import functional as F
 import matplotlib.pyplot as plt
 from model import CVAE
 
-train = pd.read_csv("dataset/VAE_Train+.csv")
-test = pd.read_csv("dataset/VAE_Test+.csv")
+train = pd.read_csv("/content/Intrusion-Detection-CVAE/dataset/VAE_Train+.csv")
+test = pd.read_csv("/content/Intrusion-Detection-CVAE/dataset/VAE_Test+.csv")
 trainx, trainy = np.array(train[train.columns[train.columns != "class"]]), np.array(pd.get_dummies(train["class"]))
 testx, testy= np.array(test[train.columns[train.columns != "class"]]), np.array(pd.get_dummies(test["class"]))
 batch_size = 512
@@ -86,7 +86,7 @@ for epoch in range(max_epoch):
     if epoch % 2 == 0:
         print(epoch,trl,tel)
 
-th.save(model.state_dict(), f"save_model/vae_adadelta_{max_epoch}.pth")
+th.save(model.state_dict(), f"/content/Intrusion-Detection-CVAE/save_model/vae_adadelta_{max_epoch}.pth")
 plt.plot(tr_loss)
 plt.plot(te_loss)
 plt.show()
