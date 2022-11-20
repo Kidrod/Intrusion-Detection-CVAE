@@ -33,7 +33,7 @@ for x in testx:
         x_hat,mu,sigma = model(x,label)
         loss = Loss_function(x_hat,x,mu,sigma)
         each_loss.append(loss)
-    pred.detach()
+    #pred.detach()
     pred.append(np.identity(m)[np.argmin(each_loss)])
 
 print(classification_report(testy,np.array(pred),target_names=attack_name))
