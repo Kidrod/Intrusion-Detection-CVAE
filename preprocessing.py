@@ -29,7 +29,7 @@ test = pd.get_dummies(test,columns=dummy_c)
 add_f= ['aol', 'harvest', 'http_2784', 'http_8001', 'red_i', 'urh_i']
 for i in add_f:
     test["service_"+i] = np.zeros(len(test)).astype("uint8")
-test
+print(test)
 
 # attack grouping and transform to value
 dos = ["back","land","neptune","pod","smurf","teardrop","apache2","udpstorm","processtable","worm","mailbomb"]
